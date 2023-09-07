@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import CustomUser, Post, Comment, Like
+from .models import CustomUser, Post, Comment, LikePost, LikeComment
 
 # Create your views here.
 

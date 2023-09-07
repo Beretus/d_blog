@@ -45,7 +45,6 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, related_name='user_posts')
     context = models.CharField(max_length=20000)
-    likes = models.ManyToManyField('Like')
     def __str__(self):
         return self.title
 
@@ -58,7 +57,6 @@ class Comment(models.Model):
     context = models.CharField(max_length=2000)
     date = models.DateField(default=timezone.now)
     post = models.ForeignKey('Post', on_delete=models.CASCADE, null=False)
-    likes = models.ManyToManyField('Like')
     def __str__(self):
         return self.context
 
@@ -68,12 +66,20 @@ class Comment(models.Model):
 
 
 
-class Like(models.Model):
-    author = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, related_name='user_likes')
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+class LikePost(models.Model):
+    author = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, related_name='user_post_likes')
     date = models.DateTimeField(default=timezone.now)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.author} liked {self.content_object}'
+        return f'{self.author} liked {self.post}'
+
+
+
+class LikeComment(models.Model):
+    author = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, related_name='user_comment_likes')
+    date = models.DateTimeField(default=timezone.now)
+    comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.author} liked {self.comment}'
