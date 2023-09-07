@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  font-family: Lato;
+}
+
+body {
+  display: grid;
+  grid-template:
+    "nav nav nav" 100px
+    "main main main" 1fr
+    "footer footer footer" 100px;
+  justify-content: center;
+  width: 100vw;
+}
+
+nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  position: fixed;
+  min-width: 100%;
+  height: 100px;
+}
+
+nav i {
+  position: absolute;
+  left: 2rem;
+  font-size: 2rem;
+}
+
+main {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+}
+
+main section .post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 40px 20px 40px 20px;
+}
+
+main section .post .text {
+  overflow: hidden;
+}
+
+main section .post img {
+  width: 500px;
+  padding-right: 10px;
+}
+
+section .post .content p {
+  margin-top: 20px;
+}
+
+section .post .content .details {
+  color: gray;
+}
+
+section .post .content .text {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+section .post .content footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+footer {
+  grid-area: footer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .links {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+footer .links a {
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+}

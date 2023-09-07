@@ -1,0 +1,60 @@
+{% load static %}
+! <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {% block title %}
+    <title>Blog</title>
+    {% endblock %}
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'styles/generic_styles.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <nav>
+      <i class="ri-menu-line"></i>
+      <h1>BlogX</h1>
+    </nav>
+    <main>
+      <section>
+        {% for post in posts %}
+        <div class="post">
+          <a href="#"><img src="images/post1.jpg" alt="post picture" /></a>
+          <div class="content">
+            <h2>{{ post.title }}</h2>
+            <p class="details">{{ post.author }}</p>
+            <p class="text">{{ post.context }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+    </main>
+    <footer>
+      <div class="links">
+        <a href="#" class="link"><i class="ri-facebook-box-line"></i></a>
+        <a href="#" class="link"><i class="ri-twitter-line"></i></a>
+        <a href="#" class="link"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="link"><i class="ri-whatsapp-line"></i></a>
+        <a href="#" class="link"><i class="ri-telegram-line"></i></a>
+      </div>
+    </footer>
+
+    <script src="" async defer></script>
+  </body>
+</html>
