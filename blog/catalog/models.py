@@ -45,6 +45,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('CustomUser', on_delete=models.CASCADE, null=False, related_name='user_posts')
     context = models.CharField(max_length=20000)
+    image = models.ImageField(upload_to='uploads/', default='post1.jpg')
     #likePost = models.ManyToManyField('LikePost', related_name='post_likes')
     def __str__(self):
         return self.title

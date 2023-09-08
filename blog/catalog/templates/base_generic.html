@@ -1,4 +1,4 @@
-<!-- {% load static %} !  -->
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,17 +8,16 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- {% block title %} -->
+    {% block title %}
     <title>Blog</title>
-    <!-- {% endblock %} -->
+    {% endblock %}
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../static/styles/generic_styles.css" />
+    <link rel="stylesheet" href="{% static 'styles/generic_styles.css' %}" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <!-- {% static 'styles/generic_styles.css' %} -->
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -48,75 +47,18 @@
     </div>
 
     <main>
-      <!-- {% for post in posts %} -->
+      {% for post in posts %}
       <div class="post">
-        <a href="#"><img src="images/post1.jpg" alt="post picture" /></a>
+        <a href="#"
+          ><img src="{{ post.image.url }}" alt="{{ post.title }}"
+        /></a>
         <div class="content">
-          <h2>Be creative, here's how!</h2>
-          <p class="details">Author: John Biden</p>
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nemo
-            aspernatur voluptas atque, sint reiciendis repellendus repellat ad
-            at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vero nemo aspernatur voluptas atque,
-            sint reiciendis repellendus repellat ad at eius provident deleniti
-            error magnam asperiores accusamus architecto! Qui, necessitatibus
-            ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            nemo aspernatur voluptas atque, sint reiciendis repellendus repellat
-            ad at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vero nemo aspernatur voluptas atque,
-            sint reiciendis repellendus repellat ad at eius provident deleniti
-            error magnam asperiores accusamus architecto! Qui, necessitatibus
-            ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            nemo aspernatur voluptas atque, sint reiciendis repellendus repellat
-            ad at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vero nemo aspernatur voluptas atque,
-            sint reiciendis repellendus repellat ad at eius provident deleniti
-            error magnam asperiores accusamus architecto! Qui, necessitatibus
-            ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            nemo aspernatur voluptas atque, sint reiciendis repellendus repellat
-            ad at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Vero nemo aspernatur voluptas atque,
-            sint reiciendis repellendus repellat ad at eius provident deleniti
-            error magnam asperiores accusamus architecto! Qui, necessitatibus
-            ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-            nemo aspernatur voluptas atque, sint reiciendis repellendus repellat
-            ad at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam!
-          </p>
+          <h2>{{ post.title }}</h2>
+          <p class="details">{{ post.author }}</p>
+          <p class="text">{{ post.context }}</p>
         </div>
       </div>
-      <!-- {% endfor %} -->
-      <div class="post">
-        <a href="#"><img src="images/post1.jpg" alt="post picture" /></a>
-        <div class="content">
-          <h2>Be creative, here's how!</h2>
-          <p class="details">Author: John Biden</p>
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nemo
-            aspernatur voluptas atque, sint reiciendis repellendus repellat ad
-            at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam!
-          </p>
-        </div>
-      </div>
-      <div class="post">
-        <a href="#"><img src="images/post1.jpg" alt="post picture" /></a>
-        <div class="content">
-          <h2>Be creative, here's how!</h2>
-          <p class="details">Author: John Biden</p>
-          <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero nemo
-            aspernatur voluptas atque, sint reiciendis repellendus repellat ad
-            at eius provident deleniti error magnam asperiores accusamus
-            architecto! Qui, necessitatibus ullam!
-          </p>
-        </div>
-      </div>
+      {% endfor %}
     </main>
     <footer>
       <div class="links">
@@ -128,6 +70,6 @@
       </div>
     </footer>
 
-    <script src="../static/scripts/generic_script.js" async defer></script>
+    <script src="{% static 'scripts/generic_script.js' %}" async defer></script>
   </body>
 </html>
