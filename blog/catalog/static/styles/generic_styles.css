@@ -25,8 +25,9 @@ nav {
 
 nav i {
   position: absolute;
-  left: 50px;
-  font-size: 20px;
+  left: 30px;
+  font-size: 2rem;
+  z-index: 101;
 }
 
 /* MAIN CONTENT / POSTS */
@@ -98,6 +99,72 @@ footer .links .link {
   color: black;
   text-decoration: none;
   font-size: 1.5rem;
+}
+
+/* MENU */
+
+.menu {
+  width: 400px;
+  height: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: -400px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin-top: 120px;
+}
+
+.menu ul .menu-item {
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.menu ul input[type="text"] {
+  font-size: 1rem;
+  width: 230px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
+.menu ul i {
+  position: absolute;
+  font-size: 1.5rem;
+  color: gray;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.menu ul a {
+  color: black;
+  text-decoration: none;
+}
+
+nav .menu-icon:hover {
+  cursor: pointer;
+}
+
+/* FOR JS */
+
+.enable {
+  left: 0;
+  box-shadow: 20px 0px 500px black;
+  transition: all 0.25s;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  transition: all 0.25s;
 }
 
 /* RWD */
