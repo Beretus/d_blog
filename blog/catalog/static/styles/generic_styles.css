@@ -11,98 +11,117 @@ body {
   font-family: Lato;
 }
 
-body {
-  display: grid;
-  grid-template:
-    "nav nav nav" 100px
-    "main main main" 1fr
-    "footer footer footer" 100px;
-  justify-content: center;
-  width: 100vw;
-}
+/* NAV */
 
 nav {
-  grid-area: nav;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  line-height: 100px;
+  width: 100%;
   background-color: white;
-  position: fixed;
-  min-width: 100%;
-  height: 100px;
+  margin-bottom: 2rem;
 }
 
 nav i {
   position: absolute;
-  left: 2rem;
-  font-size: 2rem;
+  left: 50px;
+  font-size: 20px;
 }
+
+/* MAIN CONTENT / POSTS */
 
 main {
-  grid-area: main;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px;
+  flex-direction: column;
+  margin: auto;
+  width: 1200px;
 }
 
-main section .post {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+/* POST */
+
+main .post {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  margin: 40px 20px 40px 20px;
-}
-
-main section .post .text {
+  height: 300px;
+  margin-bottom: 30px;
   overflow: hidden;
 }
 
-main section .post img {
-  width: 500px;
-  padding-right: 10px;
+main .post p {
+  margin-top: 10px;
 }
 
-section .post .content p {
-  margin-top: 20px;
-}
-
-section .post .content .details {
+main .post .content .details {
   color: gray;
 }
 
-section .post .content .text {
-  width: 100%;
-  height: 200px;
+/* make sure that text that's too long will be ended with ... */
+
+main .post .content .text {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-section .post .content footer {
-  grid-area: footer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100%;
+main .post .content {
+  margin-left: 20px;
 }
+
+main .post img {
+  width: 100%;
+  height: auto;
+}
+
+/* FOOTER */
 
 footer {
-  grid-area: footer;
   width: 100%;
+  margin-top: 2em;
+  background-color: white;
+  line-height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 footer .links {
-  width: 40%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  width: 30%;
 }
 
-footer .links a {
-  text-decoration: none;
+footer .links .link {
   color: black;
-  font-size: 30px;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+/* RWD */
+@media (width < 1240px) {
+  main {
+    width: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main .post {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    overflow: visible;
+    margin-bottom: 20em;
+    width: 500px;
+  }
+
+  main .post img {
+    width: 100%;
+    height: auto;
+  }
+
+  main .post .content {
+    margin: 0;
+  }
 }
