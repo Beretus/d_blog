@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %} {% block content %}
+
+<p>{{ post.title }}</p>
+<p>{{ post.context }}</p>
+<p>{{ post.author }}</p>
+
+{% for comment in post.comment_set.all %}
+
+<p>{{ comment.author }}</p>
+<p>{{ comment.context }}</p>
+<p>{{ comment.date }}</p>
+
+{% endfor %} {% endblock %}

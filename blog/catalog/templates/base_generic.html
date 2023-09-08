@@ -46,10 +46,11 @@
       </ul>
     </div>
 
+    {% block content %}
     <main>
       {% for post in posts %}
       <div class="post">
-        <a href="#"
+        <a href="{{ post.get_absolute_url }}"
           ><img src="{{ post.image.url }}" alt="{{ post.title }}"
         /></a>
         <div class="content">
@@ -60,6 +61,7 @@
       </div>
       {% endfor %}
     </main>
+    {% endblock %}
     <footer>
       <div class="links">
         <a href="#" class="link"><i class="ri-facebook-box-line"></i></a>
