@@ -44,7 +44,7 @@
         <div class="comment">
           <div class="comment-image">
             <img
-              src="../../../media/uploads/post1.jpg"
+              src="{{ comment.author.avatar.url }}"
               alt="comment-avatar"
               class="comment-avatar"
             />
@@ -61,44 +61,21 @@
       <div class="related-posts">
         <h4 class="related-title">Similar posts</h4>
         <div class="posts-list">
-          <div class="post">
+          {% for similar_post in same_author_posts %}
+          <div class="detail-post">
             <div class="post-image">
               <img
-                src="../../../media/uploads/post1.jpg"
-                alt="related-post-img"
+                src="{{ similar_post.image.url }}"
+                alt="{{ similar_post.title }}"
                 class="related-post-img"
               />
             </div>
             <div class="post-title">
-              <p class="title">Some similar post title</p>
+              <p class="title">{{ similar_post.title }}</p>
             </div>
           </div>
 
-          <div class="post">
-            <div class="post-image">
-              <img
-                src="../../../media/uploads/post1.jpg"
-                alt="related-post-img"
-                class="related-post-img"
-              />
-            </div>
-            <div class="post-title">
-              <p class="title">Some similar post title</p>
-            </div>
-          </div>
-
-          <div class="post">
-            <div class="post-image">
-              <img
-                src="../../../media/uploads/post1.jpg"
-                alt="related-post-img"
-                class="related-post-img"
-              />
-            </div>
-            <div class="post-title">
-              <p class="title">Some similar post title</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </main>

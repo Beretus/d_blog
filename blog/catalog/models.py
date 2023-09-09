@@ -35,7 +35,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField("email address", unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default='post1.jpg')
 
     def __str__(self):
         return self.email

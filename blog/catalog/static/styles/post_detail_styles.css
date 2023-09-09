@@ -145,8 +145,8 @@ main .post-content .content {
 }
 
 .related-posts .posts-list .post-image {
-  max-width: 400px;
-  max-height: 200px;
+  width: 400px;
+  height: 200px;
 }
 
 .related-posts .posts-list .post-image img {
@@ -155,13 +155,14 @@ main .post-content .content {
   height: 100%;
 }
 
-.related-posts .posts-list .post {
+.related-posts .posts-list .detail-post {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
 }
 
-.related-posts .posts-list .post .post-title {
+.related-posts .posts-list .detail-post .post-title {
   margin: 1em 0 1em 0;
 }

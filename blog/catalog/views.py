@@ -15,8 +15,16 @@ def index(request):
 
 class PostDetailView(generic.DetailView):
     model = Post
+    template_name = 'catalog/post_detail.html'  
 
-    def post_detail_view(request, primary_key):
-        post = get_object_or_404(Post, pk=primary_key)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.object
+        author = post.author
+        same_author_posts = Post.objects.filter(author=author).exclude(pk=post.pk)[:3]
+        context['same_author_posts'] = same_author_posts
+        return context
 
-        return render(request, 'catalog/post_detail.html', context={'post':post})
+
+class CustomUserListView(generic.ListView):
+    model = CustomUser
