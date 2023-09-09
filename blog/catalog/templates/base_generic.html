@@ -13,7 +13,9 @@
     {% endblock %}
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/generic_styles.css' %}" />
+    {% endblock %}
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"

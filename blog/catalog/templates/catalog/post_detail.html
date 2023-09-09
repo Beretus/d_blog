@@ -1,66 +1,36 @@
-<!-- {% extends "base_generic.html" %} {% block content %} -->
-{% load static %}
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% extends "base_generic.html" %} {% load static %}
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- {% block title %} -->
-    <title>Blog</title>
-    <!-- {% endblock %} -->
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../static/styles/post_detail_styles.css" />
+    {% block title %}
+    <title>{{ post.title }}</title>
+    {% endblock %} {% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/generic_styles.css' %}" />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'styles/post_detail_styles.css' %}"
+    />
+    {% endblock %}
+
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"
     />
   </head>
   <body>
+    {% block content %}
     <main>
       <div class="header">
-        <h1>How to be more productive?</h1>
-        <p class="date">7 Sep 2023</p>
+        <h1>{{ post.title }}</h1>
+        <p class="date">{{ post.author }}</p>
       </div>
 
       <div class="image">
-        <img src="../../../media/uploads/post1.jpg" alt="post image" />
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" />
       </div>
 
       <div class="post-content">
-        <p class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-          id, rem ex ipsa delectus dolores! d Saepe exercitationem ad
-          necessitatibus. Deserunt hic quibusdam unde aspernatur, suscipit
-          nostrum fugit nemo architecto magnam? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Reprehenderit id, rem ex ipsa delectus
-          dolores! d Saepe exercitationem ad necessitatibus. Deserunt hic
-          quibusdam unde aspernatur, suscipit nostrum fugit nemo architecto
-          magnam?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit id, rem ex ipsa delectus dolores! d Saepe exercitationem
-          ad necessitatibus. Deserunt hic quibusdam unde aspernatur, suscipit
-          nostrum fugit nemo architecto magnam?Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Reprehenderit id, rem ex ipsa delectus
-          dolores! d Saepe exercitationem ad necessitatibus. Deserunt hic
-          quibusdam unde aspernatur, suscipit nostrum fugit nemo architecto
-          <br />
-          <br />
-          magnam?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit id, rem ex ipsa delectus dolores! d Saepe exercitationem
-          ad necessitatibus. Deserunt hic quibusdam unde aspernatur, suscipit
-          nostrum fugit nemo architecto magnam?Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Reprehenderit id, rem ex ipsa delectus
-          dolores! d Saepe exercitationem ad necessitatibus. Deserunt hic
-          quibusdam unde aspernatur, suscipit nostrum fugit nemo architecto
-          magnam?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit id, rem ex ipsa delectus dolores! d Saepe exercitationem
-          ad necessitatibus. Deserunt hic quibusdam unde aspernatur, suscipit
-          nostrum fugit nemo architecto magnam?
-        </p>
+        <p class="content">{{ post.context }}</p>
       </div>
 
       <div class="comments-input">
@@ -70,6 +40,7 @@
       </div>
 
       <div class="comments-list">
+        {% for comment in post.comment_set.all %}
         <div class="comment">
           <div class="comment-image">
             <img
@@ -79,57 +50,12 @@
             />
           </div>
           <div class="comment-content">
-            <p class="comment-text">Lorem, ipsum dolor sit amet co.</p>
-            <p class="comment-date">7 Sep 2023</p>
+            <p class="comment-text">{{ comment.context }}</p>
+            <p class="comment-date">{{ comment.date }}</p>
           </div>
         </div>
 
-        <div class="comment">
-          <div class="comment-image">
-            <img
-              src="../../../media/uploads/post1.jpg"
-              alt="comment-avatar"
-              class="comment-avatar"
-            />
-          </div>
-          <div class="comment-content">
-            <p class="comment-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
-              dolorum quaerat ducimus fugiat voluptatum facilis! Velit rerum
-              quibusdam omnis optio provident sit voluptatem repellendus
-              cupiditate ratione maiores, asperiducimus fugiat voluptatum
-              facilis! Velit rerum quibusdam omnis optio provident sit
-              volupducimus fugiat voluptatum facilis! Velit rerum quibusdam
-              omnis optio provident sit volupducimus fugiat voluptatum facilis!
-              Velit rerum quibusdam omnis optio provident sit volupducimus
-              fugiat voluptatum facilis! Velit rerum quibusdam omnis optio
-              provident sit volupores impedit eligendi. ducimus fugiat
-              voluptatum facilis! Velit rerum quibusdam omnis optio provident
-              sit volup ducimus fugiat voluptatum facilis! Velit rerum quibusdam
-              omnis optio provident sit volup
-            </p>
-            <p class="comment-date">7 Sep 2023</p>
-          </div>
-        </div>
-
-        <div class="comment">
-          <div class="comment-image">
-            <img
-              src="../../../media/uploads/post1.jpg"
-              alt="comment-avatar"
-              class="comment-avatar"
-            />
-          </div>
-          <div class="comment-content">
-            <p class="comment-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
-              dolorum quaerat ducimus fugiat voluptatum facilis! Velit rerum
-              quibusdam omnis optio provident sit voluptatem repellendus
-              cupiditate ratione maiores, asperiores impedit eligendi.
-            </p>
-            <p class="comment-date">7 Sep 2023</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
 
       <div class="related-posts">
@@ -176,19 +102,6 @@
         </div>
       </div>
     </main>
+    {% endblock %}
   </body>
 </html>
-
-<!-- <p>{{ post.title }}</p>
-<p>{{ post.context }}</p>
-<p>{{ post.author }}</p>
-
-{% for comment in post.comment_set.all %}
-
-<p>{{ comment.author }}</p>
-<p>{{ comment.context }}</p>
-<p>{{ comment.date }}</p>
-
-{% endfor %}  -->
-
-<!-- {% endblock %} -->
